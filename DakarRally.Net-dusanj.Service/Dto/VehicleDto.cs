@@ -5,8 +5,6 @@ namespace DakarRally.Net_dusanj.Service.Dto
 {
     public class VehicleDto
     {
-        public int VehicleId { get; set; }
-
         public string TeamName { get; set; }
 
         public string Model { get; set; }

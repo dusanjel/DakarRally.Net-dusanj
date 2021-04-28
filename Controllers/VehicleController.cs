@@ -1,5 +1,6 @@
 ﻿using DakarRally.Net_dusanj.Service.Dto;
 using DakarRally.Net_dusanj.Service.Interfaces;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -28,6 +29,13 @@ namespace DakarRally.Net_dusanj.Controllers
             vehicleRepositoryService.SaveVehicle(vehicle);
 
             return Ok();
+        }
+
+        [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public IActionResult Get(int id)
+        {
+            return Ok(vehicleRepositoryService.getVehicleById(id));
         }
     }
 }
