@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <RootNamespace>DakarRally.Net_dusanj</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="DakarRally.Net-dusanj.Common\**" />
+    <Compile Remove="DakarRally.Net-dusanj.Domain\**" />
+    <Compile Remove="DakarRally.Net-dusanj.Service\**" />
+    <Compile Remove="DakarRally.Net-dusanj.Test\**" />
+    <Content Remove="DakarRally.Net-dusanj.Common\**" />
+    <Content Remove="DakarRally.Net-dusanj.Domain\**" />
+    <Content Remove="DakarRally.Net-dusanj.Service\**" />
+    <Content Remove="DakarRally.Net-dusanj.Test\**" />
+    <EmbeddedResource Remove="DakarRally.Net-dusanj.Common\**" />
+    <EmbeddedResource Remove="DakarRally.Net-dusanj.Domain\**" />
+    <EmbeddedResource Remove="DakarRally.Net-dusanj.Service\**" />
+    <EmbeddedResource Remove="DakarRally.Net-dusanj.Test\**" />
+    <None Remove="DakarRally.Net-dusanj.Common\**" />
+    <None Remove="DakarRally.Net-dusanj.Domain\**" />
+    <None Remove="DakarRally.Net-dusanj.Service\**" />
+    <None Remove="DakarRally.Net-dusanj.Test\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="DakarRally.Net-dusanj.Service\DakarRally.Net-dusanj.Service.csproj" />
+  </ItemGroup>
+
+</Project>
