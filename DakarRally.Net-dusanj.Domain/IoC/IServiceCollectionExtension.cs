@@ -15,7 +15,7 @@ namespace DakarRally.Net_dusanj.Domain.IoC
             var connection = @"Server=(localdb)\mssqllocaldb;Database=DakarRally;Integrated Security=True";
 
             services.AddDbContext<DakarRallyDBContext>
-                (options => options.UseSqlServer(connection));
+                (options => options.UseSqlServer(connection, b => b.MigrationsAssembly("DakarRally.Net-dusanj")));
 
             return services;
         }
