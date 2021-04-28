@@ -1,4 +1,6 @@
+using DakarRally.Net_dusanj.Service.Interfaces;
 using DakarRally.Net_dusanj.Service.IoC;
+using DakarRally.Net_dusanj.Service.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -21,6 +23,7 @@ namespace DakarRally.Net_dusanj
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddService();
+            services.AddTransient<IVehicleRepositoryService, VehicleRepositoryService>();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
