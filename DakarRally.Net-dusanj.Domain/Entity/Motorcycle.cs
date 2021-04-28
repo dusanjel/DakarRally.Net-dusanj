@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DakarRally.Net_dusanj.Domain.Entity
 {
+    [Table("Motorcycles")]
     public class Motorcycle : Vehicle
     {
         public const int MaxSpeedCross = 85;

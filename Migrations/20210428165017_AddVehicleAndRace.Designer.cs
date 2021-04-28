@@ -4,14 +4,16 @@ using DakarRally.Net_dusanj.Domain.Entity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DakarRally.Net_dusanj.Migrations
 {
     [DbContext(typeof(DakarRallyDBContext))]
-    partial class DakarRallyDBContextModelSnapshot : ModelSnapshot
+    [Migration("20210428165017_AddVehicleAndRace")]
+    partial class AddVehicleAndRace
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

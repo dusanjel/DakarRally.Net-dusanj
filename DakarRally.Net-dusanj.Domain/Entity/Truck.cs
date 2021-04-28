@@ -1,5 +1,8 @@
-﻿namespace DakarRally.Net_dusanj.Domain.Entity
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace DakarRally.Net_dusanj.Domain.Entity
 {
+    [Table("Trucks")]
     public class Truck : Vehicle
     {
         public const int MaxSpeed = 140;

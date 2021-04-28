@@ -1,11 +1,13 @@
 ﻿using DakarRally.Net_dusanj.Common.Enum;
 using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DakarRally.Net_dusanj.Domain.Entity
 {
-    public abstract class Vehicle
+    [Table("Vehicles")]
+    public class Vehicle
     {
-        public Guid Id { get; set; }
+        public int VehicleId { get; set; }
 
         public string TeamName { get; set; }
 
