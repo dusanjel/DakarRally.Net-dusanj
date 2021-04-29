@@ -13,6 +13,7 @@ namespace DakarRally.Net_dusanj.Test
             var configuration = new MapperConfiguration(config =>
             {
                 config.AddProfile<VehicleProfile>();
+                config.AddProfile<RaceProfile>();
             });
 
             configuration.AssertConfigurationIsValid();
