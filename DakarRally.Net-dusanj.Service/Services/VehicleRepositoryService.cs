@@ -39,6 +39,19 @@ namespace DakarRally.Net_dusanj.Service.Services
             unitOfWork.SaveChanges();
         }
 
+        public void UpdateVehicle(VehicleDto model) 
+        {
+            var result = unitOfWork.Vehicles.Get(model.VehicleId);
+
+            result.ManufacturingDate = model.ManufacturingDate;
+            result.Model = model.Model;
+            result.TeamName = model.TeamName;
+
+            unitOfWork.Vehicles.Edit(result);
+            unitOfWork.SaveChanges();
+        }
+
+
         public VehicleDto getVehicleById(int id) 
         {
             var result = unitOfWork.Vehicles.Get(id);

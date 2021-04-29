@@ -27,6 +27,15 @@ namespace DakarRally.Net_dusanj.Controllers
             return Ok();
         }
 
+        [HttpPost]
+        [Route("update")]
+        public IActionResult Update([FromBody] VehicleDto vehicle)
+        {
+            vehicleRepositoryService.UpdateVehicle(vehicle);
+
+            return Ok();
+        }
+
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public IActionResult Get(int id)

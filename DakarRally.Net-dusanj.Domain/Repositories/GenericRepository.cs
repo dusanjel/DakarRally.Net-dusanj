@@ -1,5 +1,6 @@
 ﻿using DakarRally.Net_dusanj.Domain.Entity;
 using DakarRally.Net_dusanj.Domain.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -54,6 +55,11 @@ namespace DakarRally.Net_dusanj.Domain.Repositories
         public void RemoveRange(IEnumerable<TEntity> entities)
         {
             Context.Set<TEntity>().RemoveRange(entities);
+        }
+
+        public void Edit(TEntity entity)
+        {
+            Context.Entry(entity).State = EntityState.Modified;
         }
     }
 }

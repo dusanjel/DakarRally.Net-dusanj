@@ -17,5 +17,6 @@ namespace DakarRally.Net_dusanj.Domain.Interfaces
 
         void Remove(TEntity entity);
         void RemoveRange(IEnumerable<TEntity> entities);
+        void Edit(TEntity entity);
     }
 }
