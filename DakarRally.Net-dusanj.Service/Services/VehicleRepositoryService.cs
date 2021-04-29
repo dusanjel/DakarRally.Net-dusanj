@@ -3,16 +3,19 @@ using DakarRally.Net_dusanj.Service.Dto;
 using DakarRally.Net_dusanj.Service.Interfaces;
 using DakarRally.Net_dusanj.Domain.Entity;
 using DakarRally.Net_dusanj.Common.Enum;
+using AutoMapper;
 
 namespace DakarRally.Net_dusanj.Service.Services
 {
     public class VehicleRepositoryService : IVehicleRepositoryService
     {
+        private IMapper _mapper;
         private readonly IUnitOfWork unitOfWork;
 
-        public VehicleRepositoryService(IUnitOfWork unitOfWork)
+        public VehicleRepositoryService(IUnitOfWork unitOfWork, IMapper mapper)
         {
             this.unitOfWork = unitOfWork;
+            _mapper = mapper;
         }
 
         public void SaveVehicle(VehicleDto model)
@@ -22,33 +25,13 @@ namespace DakarRally.Net_dusanj.Service.Services
             switch (model.VehicleType)
             {
                 case VehicleTypeEnum.Car:
-                    vehicle = new Car()
-                    {
-                        MalfunctionType = model.MalfunctionType,
-                        ManufacturingDate = model.ManufacturingDate,
-                        Model = model.Model,
-                        TeamName = model.TeamName,
-                        CarType = model.CarType,                        
-                    };
+                    vehicle = _mapper.Map<Vehicle>(model);
                     break;
                 case VehicleTypeEnum.Motorcycle:
-                    vehicle = new Motorcycle()
-                    {
-                        MalfunctionType = model.MalfunctionType,
-                        ManufacturingDate = model.ManufacturingDate,
-                        Model = model.Model,
-                        TeamName = model.TeamName,
-                        MotorcycleType = model.MotorcycleType,
-                    };
+                    vehicle = _mapper.Map<Motorcycle>(model);
                     break;
                 default:
-                    vehicle = new Truck()
-                    {
-                        MalfunctionType = model.MalfunctionType,
-                        ManufacturingDate = model.ManufacturingDate,
-                        Model = model.Model,
-                        TeamName = model.TeamName,
-                    };
+                    vehicle = _mapper.Map<Truck>(model);
                     break;
             }
 
@@ -60,14 +43,7 @@ namespace DakarRally.Net_dusanj.Service.Services
         {
             var result = unitOfWork.Vehicles.Get(id);
 
-            var vehicle = new VehicleDto()
-            {
-                VehicleId = result.VehicleId,
-                MalfunctionType = result.MalfunctionType,
-                ManufacturingDate = result.ManufacturingDate,
-                Model = result.Model,
-                TeamName = result.TeamName,
-            };
+            var vehicle = _mapper.Map<VehicleDto>(result);
 
             return vehicle;
         }
