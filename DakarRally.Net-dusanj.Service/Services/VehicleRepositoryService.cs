@@ -25,7 +25,7 @@ namespace DakarRally.Net_dusanj.Service.Services
             switch (model.VehicleType)
             {
                 case VehicleTypeEnum.Car:
-                    vehicle = _mapper.Map<Vehicle>(model);
+                    vehicle = _mapper.Map<Car>(model);
                     break;
                 case VehicleTypeEnum.Motorcycle:
                     vehicle = _mapper.Map<Motorcycle>(model);

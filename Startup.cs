@@ -24,6 +24,7 @@ namespace DakarRally.Net_dusanj
         {
             services.AddService();
             services.AddTransient<IVehicleRepositoryService, VehicleRepositoryService>();
+            services.AddTransient<IRaceRepositoryService, RaceRepositoryService>();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

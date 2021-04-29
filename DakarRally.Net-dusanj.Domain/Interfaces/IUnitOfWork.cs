@@ -6,7 +6,8 @@ namespace DakarRally.Net_dusanj.Domain.Interfaces
 {
     public interface IUnitOfWork : IDisposable
     {
-        public IVehicleRepository Vehicles { get; }
+        IVehicleRepository Vehicles { get; }
+        IRaceRepository Races { get; }
         int SaveChanges();
     }
 }
