@@ -15,8 +15,6 @@ namespace DakarRally.Net_dusanj.Domain.Entity
 
         public DateTime ManufacturingDate { get; set; }
 
-        public VehicleTypeEnum Type { get; set; }
-
         public MalfunctionTypeEnum MalfunctionType { get; set; }
     }
 }

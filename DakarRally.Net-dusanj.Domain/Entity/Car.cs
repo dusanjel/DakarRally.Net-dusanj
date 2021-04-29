@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using DakarRally.Net_dusanj.Common.Enum;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DakarRally.Net_dusanj.Domain.Entity
 {
@@ -18,5 +19,7 @@ namespace DakarRally.Net_dusanj.Domain.Entity
         public const int MalfunctionProbabilityTerrainLight = 3;
 
         public const int MalfunctionProbabilityTerrainHeavy = 1;
+
+        public CarTypeEnum CarType { get; set; }
     }
 }
