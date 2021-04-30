@@ -18,7 +18,5 @@ namespace DakarRally.Net_dusanj.Service.Dto
         public MotorcycleTypeEnum MotorcycleType { get; set; }
 
         public VehicleTypeEnum VehicleType { get; set; }
-
-        public MalfunctionTypeEnum MalfunctionType { get; set; }
     }
 }
