@@ -18,5 +18,11 @@ namespace DakarRally.Net_dusanj.Domain.Entity
         public DateTime ManufacturingDate { get; set; }
 
         public MalfunctionTypeEnum MalfunctionType { get; set; }
+
+        public int Distance { get; set; }
+
+        public DateTime StartTime { get; set; }
+
+        public DateTime EndTime { get; set; }
     }
 }

@@ -4,14 +4,16 @@ using DakarRally.Net_dusanj.Domain.Entity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DakarRally.Net_dusanj.Migrations
 {
     [DbContext(typeof(DakarRallyDBContext))]
-    partial class DakarRallyDBContextModelSnapshot : ModelSnapshot
+    [Migration("20210430160122_VehicleDistance")]
+    partial class VehicleDistance
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -47,9 +49,6 @@ namespace DakarRally.Net_dusanj.Migrations
                     b.Property<int>("Distance")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("EndTime")
-                        .HasColumnType("datetime2");
-
                     b.Property<int>("MalfunctionType")
                         .HasColumnType("int");
 
@@ -61,9 +60,6 @@ namespace DakarRally.Net_dusanj.Migrations
 
                     b.Property<int>("RaceId")
                         .HasColumnType("int");
-
-                    b.Property<DateTime>("StartTime")
-                        .HasColumnType("datetime2");
 
                     b.Property<string>("TeamName")
                         .HasColumnType("nvarchar(max)");
