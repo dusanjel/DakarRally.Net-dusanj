@@ -4,6 +4,7 @@ using DakarRally.Net_dusanj.Domain.Entity;
 using DakarRally.Net_dusanj.Domain.Interfaces;
 using DakarRally.Net_dusanj.Service.Dto;
 using DakarRally.Net_dusanj.Service.Interfaces;
+using System;
 using System.Collections.Generic;
 
 namespace DakarRally.Net_dusanj.Service.Services
@@ -38,6 +39,17 @@ namespace DakarRally.Net_dusanj.Service.Services
                     race.Vehicle = new List<Vehicle>() { _mapper.Map<Truck>(model.Vehicle) };
                     break;
             }
+
+            unitOfWork.Races.Add(race);
+            unitOfWork.SaveChanges();
+        }
+
+        public void SaveRaceByYear(DateTime Year)
+        {
+            Race race = new Race()
+            {
+                Year = Year,
+            };
 
             unitOfWork.Races.Add(race);
             unitOfWork.SaveChanges();

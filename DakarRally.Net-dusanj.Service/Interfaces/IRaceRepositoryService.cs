@@ -10,5 +10,6 @@ namespace DakarRally.Net_dusanj.Service.Interfaces
     public interface IRaceRepositoryService
     {
         void SaveRace(RaceDto model);
+        void SaveRaceByYear(DateTime Year);
     }
 }
