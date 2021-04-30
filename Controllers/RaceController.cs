@@ -24,9 +24,9 @@ namespace DakarRally.Net_dusanj.Controllers
 
         [HttpPost]
         [Route("create")]
-        public IActionResult CreateRace(DateTime Year)
+        public IActionResult CreateRace(int Year)
         {
-            raceRepositoryService.SaveRaceByYear(Year);
+            raceRepositoryService.SaveRaceByYear(new DateTime(Year,1,1));
 
             return Ok();
         }
