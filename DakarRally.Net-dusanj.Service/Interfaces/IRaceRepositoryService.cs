@@ -12,5 +12,7 @@ namespace DakarRally.Net_dusanj.Service.Interfaces
         void SaveRace(RaceDto model);
         void SaveRaceByYear(DateTime Year);
         void UpdateRace(int RaceId, VehicleDto model);
+
+        void StartRace(int RaceId);
     }
 }

@@ -59,21 +59,37 @@ namespace DakarRally.Net_dusanj.Service.Services
         {
             var race = unitOfWork.Races.Get(RaceId);
 
-            switch (model.VehicleType)
+            if (race != null)
             {
-                case VehicleTypeEnum.Car:
-                    race.Vehicle = new List<Vehicle>() { _mapper.Map<Car>(model) };
-                    break;
-                case VehicleTypeEnum.Motorcycle:
-                    race.Vehicle = new List<Vehicle>() { _mapper.Map<Motorcycle>(model) };
-                    break;
-                default:
-                    race.Vehicle = new List<Vehicle>() { _mapper.Map<Truck>(model) };
-                    break;
-            }
+                switch (model.VehicleType)
+                {
+                    case VehicleTypeEnum.Car:
+                        race.Vehicle = new List<Vehicle>() { _mapper.Map<Car>(model) };
+                        break;
+                    case VehicleTypeEnum.Motorcycle:
+                        race.Vehicle = new List<Vehicle>() { _mapper.Map<Motorcycle>(model) };
+                        break;
+                    default:
+                        race.Vehicle = new List<Vehicle>() { _mapper.Map<Truck>(model) };
+                        break;
+                }
 
-            unitOfWork.Races.Edit(race);
-            unitOfWork.SaveChanges();
+                unitOfWork.Races.Edit(race);
+                unitOfWork.SaveChanges();
+            }
+        }
+
+        public void StartRace(int RaceId)
+        {
+            var race = unitOfWork.Races.Get(RaceId);
+
+            if (race != null)
+            {
+                race.RaceStatus = RaceStatusEnum.Running;
+
+                unitOfWork.Races.Edit(race);
+                unitOfWork.SaveChanges();
+            }
         }
     }
 }

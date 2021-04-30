@@ -39,5 +39,14 @@ namespace DakarRally.Net_dusanj.Controllers
 
             return Ok();
         }
+
+        [HttpPost]
+        [Route("start")]
+        public IActionResult Start(int raceId)
+        {
+            raceRepositoryService.StartRace(raceId);
+
+            return Ok();
+        }
     }
 }
