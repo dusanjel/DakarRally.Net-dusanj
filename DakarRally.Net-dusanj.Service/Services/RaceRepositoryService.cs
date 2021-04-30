@@ -54,5 +54,26 @@ namespace DakarRally.Net_dusanj.Service.Services
             unitOfWork.Races.Add(race);
             unitOfWork.SaveChanges();
         }
+
+        public void UpdateRace(int RaceId, VehicleDto model)
+        {
+            var race = unitOfWork.Races.Get(RaceId);
+
+            switch (model.VehicleType)
+            {
+                case VehicleTypeEnum.Car:
+                    race.Vehicle = new List<Vehicle>() { _mapper.Map<Car>(model) };
+                    break;
+                case VehicleTypeEnum.Motorcycle:
+                    race.Vehicle = new List<Vehicle>() { _mapper.Map<Motorcycle>(model) };
+                    break;
+                default:
+                    race.Vehicle = new List<Vehicle>() { _mapper.Map<Truck>(model) };
+                    break;
+            }
+
+            unitOfWork.Races.Edit(race);
+            unitOfWork.SaveChanges();
+        }
     }
 }
