@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DakarRally.Net_dusanj.Common.Enum;
+using System;
 using System.Collections.Generic;
 
 namespace DakarRally.Net_dusanj.Domain.Entity
@@ -11,7 +12,7 @@ namespace DakarRally.Net_dusanj.Domain.Entity
 
         public DateTime Year { get; set; }
 
-        public int RaceStatus { get; set; }
+        public RaceStatusEnum RaceStatus { get; set; }
 
         public virtual ICollection<Vehicle> Vehicle { get; set; }
         
