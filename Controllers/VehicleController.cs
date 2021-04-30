@@ -20,14 +20,6 @@ namespace DakarRally.Net_dusanj.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post([FromBody] VehicleDto vehicle)
-        {
-            vehicleRepositoryService.SaveVehicle(vehicle);
-
-            return Ok();
-        }
-
-        [HttpPost]
         [Route("update")]
         public IActionResult Update([FromBody] VehicleDto vehicle)
         {

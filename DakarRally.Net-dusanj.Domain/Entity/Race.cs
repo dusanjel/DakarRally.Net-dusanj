@@ -13,8 +13,6 @@ namespace DakarRally.Net_dusanj.Domain.Entity
 
         public int RaceStatus { get; set; }
 
-        public int VehicleId { get; set; }
-
         public virtual ICollection<Vehicle> Vehicle { get; set; }
         
     }
