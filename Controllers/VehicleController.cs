@@ -42,5 +42,14 @@ namespace DakarRally.Net_dusanj.Controllers
         {
             return Ok(vehicleRepositoryService.getVehicleById(id));
         }
+
+        [HttpPost]
+        [Route("remove")]
+        public IActionResult Remove(int id)
+        {
+            vehicleRepositoryService.removeById(id);
+
+            return Ok();
+        }
     }
 }

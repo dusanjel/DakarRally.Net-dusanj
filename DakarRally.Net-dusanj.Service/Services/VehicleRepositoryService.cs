@@ -60,5 +60,15 @@ namespace DakarRally.Net_dusanj.Service.Services
 
             return vehicle;
         }
+
+        public void removeById(int id)
+        {
+            var vehicle = unitOfWork.Vehicles.Get(id);
+            if (vehicle != null)
+            {
+                unitOfWork.Vehicles.Remove(vehicle);
+                unitOfWork.SaveChanges();
+            }
+        }
     }
 }
