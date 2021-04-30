@@ -6,6 +6,7 @@ using DakarRally.Net_dusanj.Service.Dto;
 using DakarRally.Net_dusanj.Service.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace DakarRally.Net_dusanj.Service.Services
 {
@@ -89,6 +90,42 @@ namespace DakarRally.Net_dusanj.Service.Services
 
                 unitOfWork.Races.Edit(race);
                 unitOfWork.SaveChanges();
+            }
+        }
+
+        public void ManageRace()
+        { 
+            var allRaces = unitOfWork.Races.GetAll();
+
+            var allVehicles = unitOfWork.Vehicles.GetAll();
+
+            var query = allRaces
+               .Join(allVehicles,
+                  race => race.RaceId,
+                  veh => veh.RaceId,
+                  (race, veh) => new { Race = race, Veh = veh })
+               .Where(raceAndveh => raceAndveh.Race.RaceStatus == RaceStatusEnum.Running);
+
+            var vehicles = query.AsEnumerable()
+                .GroupBy(x => x.Veh).Select(x => _mapper.Map<Vehicle>(x.Key)).ToList();
+
+            // TODO: improve calc, add finish race, add start time and end time, add malfunction probability
+
+            foreach (var vehicle in vehicles)
+            {
+                // Check vehicle type for constant?
+                vehicle.Distance += Car.MaxSpeedTerrain / (3600 * 10); // Increase every 10 second 
+
+                unitOfWork.Vehicles.Edit(vehicle);
+                unitOfWork.SaveChanges();
+
+                if (vehicle.Distance == Race.Distance)
+                {
+                    vehicle.Winner = true;
+
+                    unitOfWork.Vehicles.Edit(vehicle);
+                    unitOfWork.SaveChanges();
+                }
             }
         }
     }

@@ -24,7 +24,7 @@ namespace DakarRally.Net_dusanj
 
         public void Schedule()
         {
-            //RecurringJob.AddOrUpdate(() => raceRepositoryService.StartRace(3), "*/15 * * * *");
+            RecurringJob.AddOrUpdate(() => raceRepositoryService.ManageRace(), "*/10 * * * * *");
         }
     }
 }

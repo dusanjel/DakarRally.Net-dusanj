@@ -4,14 +4,16 @@ using DakarRally.Net_dusanj.Domain.Entity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DakarRally.Net_dusanj.Migrations
 {
     [DbContext(typeof(DakarRallyDBContext))]
-    partial class DakarRallyDBContextModelSnapshot : ModelSnapshot
+    [Migration("20210430172012_AddWinner")]
+    partial class AddWinner
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -44,8 +46,8 @@ namespace DakarRally.Net_dusanj.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<decimal>("Distance")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<int>("Distance")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("EndTime")
                         .HasColumnType("datetime2");

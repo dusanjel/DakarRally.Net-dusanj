@@ -6,19 +6,19 @@ namespace DakarRally.Net_dusanj.Domain.Entity
     [Table("Motorcycles")]
     public class Motorcycle : Vehicle
     {
-        public const int MaxSpeedCross = 85;
+        public const decimal MaxSpeedCross = 85;
 
-        public const int MaxSpeedSport = 130;
+        public const decimal MaxSpeedSport = 130;
 
-        public const int RepairmentDuration = 3;
+        public const decimal RepairmentDuration = 3;
 
-        public const int MalfunctionProbabilitySportLight = 18;
+        public const decimal MalfunctionProbabilitySportLight = 18;
 
-        public const int MalfunctionProbabilitySportHeavy = 10;
+        public const decimal MalfunctionProbabilitySportHeavy = 10;
 
-        public const int MalfunctionProbabilityCrossLight = 3;
+        public const decimal MalfunctionProbabilityCrossLight = 3;
 
-        public const int MalfunctionProbabilityCrossHeavy = 2;
+        public const decimal MalfunctionProbabilityCrossHeavy = 2;
 
         public MotorcycleTypeEnum MotorcycleType { get; set; }
     }

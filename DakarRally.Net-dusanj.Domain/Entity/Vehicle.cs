@@ -19,10 +19,12 @@ namespace DakarRally.Net_dusanj.Domain.Entity
 
         public MalfunctionTypeEnum MalfunctionType { get; set; }
 
-        public int Distance { get; set; }
+        public decimal Distance { get; set; }
 
         public DateTime StartTime { get; set; }
 
         public DateTime EndTime { get; set; }
+
+        public bool Winner { get; set; }
     }
 }

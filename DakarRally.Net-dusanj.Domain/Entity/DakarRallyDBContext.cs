@@ -17,5 +17,12 @@ namespace DakarRally.Net_dusanj.Domain.Entity
         public DbSet<Truck> Trucks { get; set; }
 
         public DbSet<Race> Races { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Vehicle>()
+                .Property(b => b.Distance)
+                .HasPrecision(18, 5);
+        }
     }
 }
