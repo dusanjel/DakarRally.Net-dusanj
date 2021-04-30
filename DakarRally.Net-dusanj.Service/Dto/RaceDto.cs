@@ -1,6 +1,5 @@
 ﻿using DakarRally.Net_dusanj.Common.Enum;
 using System;
-using System.Collections.Generic;
 
 namespace DakarRally.Net_dusanj.Service.Dto
 {
