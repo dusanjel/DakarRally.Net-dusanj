@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using DakarRally.Net_dusanj.Common.Enum;
+using DakarRally.Net_dusanj.Common.Help;
 using DakarRally.Net_dusanj.Domain.Entity;
 using DakarRally.Net_dusanj.Domain.Interfaces;
 using DakarRally.Net_dusanj.Service.Dto;
@@ -83,9 +84,10 @@ namespace DakarRally.Net_dusanj.Service.Services
                .Where(raceAndveh => raceAndveh.Race.RaceStatus == RaceStatusEnum.Running);
 
             var vehicles = query.AsEnumerable()
-                .GroupBy(x => x.Veh).Select(x => _mapper.Map<Vehicle>(x.Key)).ToList();
+                .GroupBy(x => x.Veh).Select(x => _mapper.Map<Vehicle>(x.Key))
+                .Where(x => x.MalfunctionType != MalfunctionTypeEnum.Heavie).ToList();
 
-            // TODO: improve calc, add finish race, add start time and end time, add malfunction probability
+            // TODO: Improve calculation, add finish race, add start time and end time
             
             var seconds = 3600 * 10;
 
@@ -94,19 +96,79 @@ namespace DakarRally.Net_dusanj.Service.Services
                 switch (vehicle.VehicleType)
                 {
                     case VehicleTypeEnum.Car:
-                        if (vehicle.CarType == CarTypeEnum.Sport)
+                        if (vehicle.CarType == CarTypeEnum.Sport) 
+                        {
                             vehicle.Distance += Car.MaxSpeedSport / seconds;
+                            vehicle.MalfunctionType = Malfunction.Probability
+                            (
+                                Car.MalfunctionProbabilitySportLight,
+                                Car.MalfunctionProbabilitySportHeavy
+                            );
+
+                            if (vehicle.MalfunctionType == MalfunctionTypeEnum.Light)
+                            {
+                                vehicle.Distance -= (Car.MaxSpeedSport * Car.RepairmentDuration);
+                            }
+                        } 
                         else
+                        {
                             vehicle.Distance += Car.MaxSpeedTerrain / seconds;
+                            // TODO: Add malfunction per hour
+                            vehicle.MalfunctionType = Malfunction.Probability
+                            (
+                                Car.MalfunctionProbabilityTerrainLight,
+                                Car.MalfunctionProbabilityTerrainHeavy
+                            );
+
+                            if (vehicle.MalfunctionType == MalfunctionTypeEnum.Light)
+                            {
+                                vehicle.Distance -= (Car.MaxSpeedSport * Car.RepairmentDuration);
+                            }
+                        }
                         break;
                     case VehicleTypeEnum.Motorcycle:
                         if (vehicle.MotorcycleType == MotorcycleTypeEnum.Sport)
+                        {
                             vehicle.Distance += Motorcycle.MaxSpeedSport / seconds;
+                            vehicle.MalfunctionType = Malfunction.Probability
+                            (
+                                Motorcycle.MalfunctionProbabilitySportLight,
+                                Motorcycle.MalfunctionProbabilitySportHeavy
+                            );
+
+                            if (vehicle.MalfunctionType == MalfunctionTypeEnum.Light)
+                            {
+                                vehicle.Distance -= (Car.MaxSpeedSport * Car.RepairmentDuration);
+                            }
+                        } 
                         else
+                        {
                             vehicle.Distance += Motorcycle.MaxSpeedCross / seconds;
+                            vehicle.MalfunctionType = Malfunction.Probability
+                            (
+                                Motorcycle.MalfunctionProbabilityCrossLight,
+                                Motorcycle.MalfunctionProbabilityCrossHeavy
+                            );
+
+                            if (vehicle.MalfunctionType == MalfunctionTypeEnum.Light)
+                            {
+                                vehicle.Distance -= (Car.MaxSpeedSport * Car.RepairmentDuration);
+                            }
+                        }
+                            
                         break;
                     default:
                         vehicle.Distance += Truck.MaxSpeed / seconds;
+                        vehicle.MalfunctionType = Malfunction.Probability
+                        (
+                            Truck.MalfunctionProbabilityLight,
+                            Truck.MalfunctionProbabilityHeavy
+                        );
+
+                        if (vehicle.MalfunctionType == MalfunctionTypeEnum.Light)
+                        {
+                            vehicle.Distance -= (Car.MaxSpeedSport * Car.RepairmentDuration);
+                        }
                         break;
                 }
 

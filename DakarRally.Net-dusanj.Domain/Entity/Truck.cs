@@ -9,8 +9,8 @@ namespace DakarRally.Net_dusanj.Domain.Entity
 
         public const decimal RepairmentDuration = 7;
 
-        public const decimal MalfunctionProbabilityLight = 6;
+        public const int MalfunctionProbabilityLight = 6;
 
-        public const decimal MalfunctionProbabilityHeavy = 4;
+        public const int MalfunctionProbabilityHeavy = 4;
     }
 }

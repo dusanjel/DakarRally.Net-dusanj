@@ -12,12 +12,12 @@ namespace DakarRally.Net_dusanj.Domain.Entity
 
         public const decimal RepairmentDuration = 3;
 
-        public const decimal MalfunctionProbabilitySportLight = 18;
+        public const int MalfunctionProbabilitySportLight = 18;
 
-        public const decimal MalfunctionProbabilitySportHeavy = 10;
+        public const int MalfunctionProbabilitySportHeavy = 10;
 
-        public const decimal MalfunctionProbabilityCrossLight = 3;
+        public const int MalfunctionProbabilityCrossLight = 3;
 
-        public const decimal MalfunctionProbabilityCrossHeavy = 2;
+        public const int MalfunctionProbabilityCrossHeavy = 2;
     }
 }
