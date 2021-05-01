@@ -99,30 +99,36 @@ namespace DakarRally.Net_dusanj.Service.Services
                         if (vehicle.CarType == CarTypeEnum.Sport) 
                         {
                             vehicle.Distance += (Car.MaxSpeedSport / seconds);
-                            vehicle.MalfunctionType = Malfunction.Probability
-                            (
-                                Car.MalfunctionProbabilitySportLight,
-                                Car.MalfunctionProbabilitySportHeavy
-                            );
 
-                            if (vehicle.MalfunctionType == MalfunctionTypeEnum.Light)
+                            if ((vehicle.Distance % Car.MaxSpeedSport) == 0)
                             {
-                                vehicle.Distance -= (Car.MaxSpeedSport * Car.RepairmentDuration);
+                                vehicle.MalfunctionType = Malfunction.Probability
+                                (
+                                    Car.MalfunctionProbabilitySportLight,
+                                    Car.MalfunctionProbabilitySportHeavy
+                                );
+
+                                if (vehicle.MalfunctionType == MalfunctionTypeEnum.Light)
+                                {
+                                    vehicle.Distance -= (Car.MaxSpeedSport * Car.RepairmentDuration);
+                                }
                             }
                         } 
                         else
                         {
                             vehicle.Distance += (Car.MaxSpeedTerrain / seconds);
-                            // TODO: Add malfunction per hour
-                            vehicle.MalfunctionType = Malfunction.Probability
-                            (
-                                Car.MalfunctionProbabilityTerrainLight,
-                                Car.MalfunctionProbabilityTerrainHeavy
-                            );
-
-                            if (vehicle.MalfunctionType == MalfunctionTypeEnum.Light)
+                           
+                            if ((vehicle.Distance % Car.MaxSpeedTerrain) == 0)
                             {
-                                vehicle.Distance -= (Car.MaxSpeedSport * Car.RepairmentDuration);
+                                vehicle.MalfunctionType = Malfunction.Probability
+                                (
+                                    Car.MalfunctionProbabilityTerrainLight,
+                                    Car.MalfunctionProbabilityTerrainHeavy
+                                );
+                                if (vehicle.MalfunctionType == MalfunctionTypeEnum.Light)
+                                {
+                                    vehicle.Distance -= (Car.MaxSpeedTerrain * Car.RepairmentDuration);
+                                }
                             }
                         }
                         break;
@@ -130,44 +136,53 @@ namespace DakarRally.Net_dusanj.Service.Services
                         if (vehicle.MotorcycleType == MotorcycleTypeEnum.Sport)
                         {
                             vehicle.Distance += (Motorcycle.MaxSpeedSport / seconds);
-                            vehicle.MalfunctionType = Malfunction.Probability
-                            (
-                                Motorcycle.MalfunctionProbabilitySportLight,
-                                Motorcycle.MalfunctionProbabilitySportHeavy
-                            );
-
-                            if (vehicle.MalfunctionType == MalfunctionTypeEnum.Light)
+                           
+                            if ((vehicle.Distance % Motorcycle.MaxSpeedSport) == 0)
                             {
-                                vehicle.Distance -= (Car.MaxSpeedSport * Car.RepairmentDuration);
+                                vehicle.MalfunctionType = Malfunction.Probability
+                                (
+                                    Motorcycle.MalfunctionProbabilitySportLight,
+                                    Motorcycle.MalfunctionProbabilitySportHeavy
+                                );
+                                if (vehicle.MalfunctionType == MalfunctionTypeEnum.Light)
+                                {
+                                    vehicle.Distance -= (Motorcycle.MaxSpeedSport * Motorcycle.RepairmentDuration);
+                                }
                             }
                         } 
                         else
                         {
                             vehicle.Distance += (Motorcycle.MaxSpeedCross / seconds);
-                            vehicle.MalfunctionType = Malfunction.Probability
-                            (
-                                Motorcycle.MalfunctionProbabilityCrossLight,
-                                Motorcycle.MalfunctionProbabilityCrossHeavy
-                            );
-
-                            if (vehicle.MalfunctionType == MalfunctionTypeEnum.Light)
+                           
+                            if ((vehicle.Distance % Motorcycle.MaxSpeedCross) == 0)
                             {
-                                vehicle.Distance -= (Car.MaxSpeedSport * Car.RepairmentDuration);
+                                vehicle.MalfunctionType = Malfunction.Probability
+                                (
+                                    Motorcycle.MalfunctionProbabilityCrossLight,
+                                    Motorcycle.MalfunctionProbabilityCrossHeavy
+                                );
+                                if (vehicle.MalfunctionType == MalfunctionTypeEnum.Light)
+                                {
+                                    vehicle.Distance -= (Motorcycle.MaxSpeedCross * Motorcycle.RepairmentDuration);
+                                }
                             }
                         }
                             
                         break;
                     default:
                         vehicle.Distance += (Truck.MaxSpeed / seconds);
-                        vehicle.MalfunctionType = Malfunction.Probability
-                        (
-                            Truck.MalfunctionProbabilityLight,
-                            Truck.MalfunctionProbabilityHeavy
-                        );
-
-                        if (vehicle.MalfunctionType == MalfunctionTypeEnum.Light)
+                        
+                        if ((vehicle.Distance % Truck.MaxSpeed) == 0)
                         {
-                            vehicle.Distance -= (Car.MaxSpeedSport * Car.RepairmentDuration);
+                            vehicle.MalfunctionType = Malfunction.Probability
+                            (
+                                Truck.MalfunctionProbabilityLight,
+                                Truck.MalfunctionProbabilityHeavy
+                            );
+                            if (vehicle.MalfunctionType == MalfunctionTypeEnum.Light)
+                            {
+                                vehicle.Distance -= (Truck.MaxSpeed * Truck.RepairmentDuration);
+                            }
                         }
                         break;
                 }
