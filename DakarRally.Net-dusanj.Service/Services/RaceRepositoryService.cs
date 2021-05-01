@@ -89,7 +89,7 @@ namespace DakarRally.Net_dusanj.Service.Services
 
             // TODO: Improve calculation, add finish race, add start time and end time
             
-            var seconds = 3600 * 10;
+            var seconds = 3600 / 10;
 
             foreach (var vehicle in vehicles)
             {
