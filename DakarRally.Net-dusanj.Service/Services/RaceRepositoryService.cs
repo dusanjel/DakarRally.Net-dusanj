@@ -98,7 +98,7 @@ namespace DakarRally.Net_dusanj.Service.Services
                     case VehicleTypeEnum.Car:
                         if (vehicle.CarType == CarTypeEnum.Sport) 
                         {
-                            vehicle.Distance += Car.MaxSpeedSport / seconds;
+                            vehicle.Distance += (Car.MaxSpeedSport / seconds);
                             vehicle.MalfunctionType = Malfunction.Probability
                             (
                                 Car.MalfunctionProbabilitySportLight,
@@ -112,7 +112,7 @@ namespace DakarRally.Net_dusanj.Service.Services
                         } 
                         else
                         {
-                            vehicle.Distance += Car.MaxSpeedTerrain / seconds;
+                            vehicle.Distance += (Car.MaxSpeedTerrain / seconds);
                             // TODO: Add malfunction per hour
                             vehicle.MalfunctionType = Malfunction.Probability
                             (
@@ -129,7 +129,7 @@ namespace DakarRally.Net_dusanj.Service.Services
                     case VehicleTypeEnum.Motorcycle:
                         if (vehicle.MotorcycleType == MotorcycleTypeEnum.Sport)
                         {
-                            vehicle.Distance += Motorcycle.MaxSpeedSport / seconds;
+                            vehicle.Distance += (Motorcycle.MaxSpeedSport / seconds);
                             vehicle.MalfunctionType = Malfunction.Probability
                             (
                                 Motorcycle.MalfunctionProbabilitySportLight,
@@ -143,7 +143,7 @@ namespace DakarRally.Net_dusanj.Service.Services
                         } 
                         else
                         {
-                            vehicle.Distance += Motorcycle.MaxSpeedCross / seconds;
+                            vehicle.Distance += (Motorcycle.MaxSpeedCross / seconds);
                             vehicle.MalfunctionType = Malfunction.Probability
                             (
                                 Motorcycle.MalfunctionProbabilityCrossLight,
@@ -158,7 +158,7 @@ namespace DakarRally.Net_dusanj.Service.Services
                             
                         break;
                     default:
-                        vehicle.Distance += Truck.MaxSpeed / seconds;
+                        vehicle.Distance += (Truck.MaxSpeed / seconds);
                         vehicle.MalfunctionType = Malfunction.Probability
                         (
                             Truck.MalfunctionProbabilityLight,
