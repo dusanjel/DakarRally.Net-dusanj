@@ -19,7 +19,5 @@ namespace DakarRally.Net_dusanj.Domain.Entity
         public const decimal MalfunctionProbabilityCrossLight = 3;
 
         public const decimal MalfunctionProbabilityCrossHeavy = 2;
-
-        public MotorcycleTypeEnum MotorcycleType { get; set; }
     }
 }

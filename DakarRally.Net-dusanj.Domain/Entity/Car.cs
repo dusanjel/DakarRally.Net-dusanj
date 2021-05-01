@@ -19,7 +19,5 @@ namespace DakarRally.Net_dusanj.Domain.Entity
         public const decimal MalfunctionProbabilityTerrainLight = 3;
 
         public const decimal MalfunctionProbabilityTerrainHeavy = 1;
-
-        public CarTypeEnum CarType { get; set; }
     }
 }

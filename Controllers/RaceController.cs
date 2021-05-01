@@ -30,9 +30,9 @@ namespace DakarRally.Net_dusanj.Controllers
 
         [HttpPost]
         [Route("addvehicle")]
-        public IActionResult AddVehicle(int raceId, VehicleDto vehicle)
+        public IActionResult AddVehicle(VehicleDto vehicle)
         {
-            raceRepositoryService.UpdateRace(raceId, vehicle);
+            raceRepositoryService.UpdateRace(vehicle);
 
             return Ok();
         }

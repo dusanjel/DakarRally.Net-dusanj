@@ -21,30 +21,6 @@ namespace DakarRally.Net_dusanj.Service.Services
             _mapper = mapper;
         }
 
-        public void SaveRace(RaceDto model)
-        {
-            Race race;
-
-            switch (model.Vehicle.VehicleType)
-            {
-                case VehicleTypeEnum.Car:
-                    race = _mapper.Map<Race>(model);
-                    race.Vehicle = new List<Vehicle>() { _mapper.Map<Car>(model.Vehicle) };
-                    break;
-                case VehicleTypeEnum.Motorcycle:
-                    race = _mapper.Map<Race>(model);
-                    race.Vehicle = new List<Vehicle>() { _mapper.Map<Motorcycle>(model.Vehicle) };
-                    break;
-                default:
-                    race = _mapper.Map<Race>(model);
-                    race.Vehicle = new List<Vehicle>() { _mapper.Map<Truck>(model.Vehicle) };
-                    break;
-            }
-
-            unitOfWork.Races.Add(race);
-            unitOfWork.SaveChanges();
-        }
-
         public void SaveRaceByYear(DateTime Year)
         {
             Race race = new Race()
@@ -56,9 +32,9 @@ namespace DakarRally.Net_dusanj.Service.Services
             unitOfWork.SaveChanges();
         }
 
-        public void UpdateRace(int RaceId, VehicleDto model)
+        public void UpdateRace(VehicleDto model)
         {
-            var race = unitOfWork.Races.Get(RaceId);
+            var race = unitOfWork.Races.Get(model.RaceId);
 
             if (race != null)
             {
@@ -118,26 +94,29 @@ namespace DakarRally.Net_dusanj.Service.Services
                 switch (vehicle.VehicleType)
                 {
                     case VehicleTypeEnum.Car:
-                        vehicle.Distance += Car.MaxSpeedTerrain / seconds;
+                        if (vehicle.CarType == CarTypeEnum.Sport)
+                            vehicle.Distance += Car.MaxSpeedSport / seconds;
+                        else
+                            vehicle.Distance += Car.MaxSpeedTerrain / seconds;
                         break;
                     case VehicleTypeEnum.Motorcycle:
-                        vehicle.Distance += Motorcycle.MaxSpeedCross / seconds;
+                        if (vehicle.MotorcycleType == MotorcycleTypeEnum.Sport)
+                            vehicle.Distance += Motorcycle.MaxSpeedSport / seconds;
+                        else
+                            vehicle.Distance += Motorcycle.MaxSpeedCross / seconds;
                         break;
                     default:
                         vehicle.Distance += Truck.MaxSpeed / seconds;
                         break;
                 }
 
-                unitOfWork.Vehicles.Edit(vehicle);
-                unitOfWork.SaveChanges();
-
                 if (vehicle.Distance == Race.Distance)
                 {
                     vehicle.Winner = true;
-
-                    unitOfWork.Vehicles.Edit(vehicle);
-                    unitOfWork.SaveChanges();
                 }
+
+                unitOfWork.Vehicles.Edit(vehicle);
+                unitOfWork.SaveChanges();
             }
         }
     }

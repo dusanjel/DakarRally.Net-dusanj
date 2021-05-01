@@ -28,5 +28,9 @@ namespace DakarRally.Net_dusanj.Domain.Entity
         public bool Winner { get; set; }
 
         public VehicleTypeEnum VehicleType { get; set; }
+
+        public CarTypeEnum CarType { get; set; }
+
+        public MotorcycleTypeEnum MotorcycleType { get; set; }
     }
 }
