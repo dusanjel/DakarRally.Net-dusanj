@@ -94,7 +94,7 @@ namespace DakarRally.Net_dusanj.Service.Services
         }
 
         public void ManageRace()
-        { 
+        {
             var allRaces = unitOfWork.Races.GetAll();
 
             var allVehicles = unitOfWork.Vehicles.GetAll();
@@ -110,11 +110,23 @@ namespace DakarRally.Net_dusanj.Service.Services
                 .GroupBy(x => x.Veh).Select(x => _mapper.Map<Vehicle>(x.Key)).ToList();
 
             // TODO: improve calc, add finish race, add start time and end time, add malfunction probability
+            
+            var seconds = 3600 * 10;
 
             foreach (var vehicle in vehicles)
             {
-                // Check vehicle type for constant?
-                vehicle.Distance += Car.MaxSpeedTerrain / (3600 * 10); // Increase every 10 second 
+                switch (vehicle.VehicleType)
+                {
+                    case VehicleTypeEnum.Car:
+                        vehicle.Distance += Car.MaxSpeedTerrain / seconds;
+                        break;
+                    case VehicleTypeEnum.Motorcycle:
+                        vehicle.Distance += Motorcycle.MaxSpeedCross / seconds;
+                        break;
+                    default:
+                        vehicle.Distance += Truck.MaxSpeed / seconds;
+                        break;
+                }
 
                 unitOfWork.Vehicles.Edit(vehicle);
                 unitOfWork.SaveChanges();

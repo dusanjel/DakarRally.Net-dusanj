@@ -26,5 +26,7 @@ namespace DakarRally.Net_dusanj.Domain.Entity
         public DateTime EndTime { get; set; }
 
         public bool Winner { get; set; }
+
+        public VehicleTypeEnum VehicleType { get; set; }
     }
 }
