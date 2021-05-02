@@ -90,7 +90,7 @@ namespace DakarRally.Net_dusanj.Service.Services
             return _mapper.Map<List<VehicleDto>>(result);
         }
 
-        public VehicleDto getVehicleByParameter(string teamName, string model, DateTime ManufacturingDate, decimal distance)
+        public List<VehicleDto> getVehicleByParameter(string teamName, string model, DateTime ManufacturingDate, decimal distance)
         {
             var result = unitOfWork.Vehicles.GetAll()
                 .Where
@@ -101,7 +101,7 @@ namespace DakarRally.Net_dusanj.Service.Services
                     x.Distance == distance
                 );
 
-            var vehicle = _mapper.Map<VehicleDto>(result);
+            var vehicle = _mapper.Map<List<VehicleDto>>(result);
 
             return vehicle;
         }

@@ -13,6 +13,6 @@ namespace DakarRally.Net_dusanj.Service.Interfaces
         void removeById(int id);
         List<VehicleDto> getAllVehiclesLeaderboard();
         List<VehicleDto> getSpecificVehiclesLeaderboard(VehicleTypeEnum type);
-        VehicleDto getVehicleByParameter(string teamName, string model, DateTime ManufacturingDate, decimal distance);
+        List<VehicleDto> getVehicleByParameter(string teamName, string model, DateTime ManufacturingDate, decimal distance);
     }
 }
