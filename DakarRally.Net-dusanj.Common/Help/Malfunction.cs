@@ -9,24 +9,24 @@ namespace DakarRally.Net_dusanj.Common.Help
         {
             MalfunctionTypeEnum result;
 
-            result = MalfunctionType(light);
+            result = MalfunctionType(light, MalfunctionTypeEnum.Light);
 
             if (result == MalfunctionTypeEnum.None)
             {
-                result = MalfunctionType(heavy);
+                result = MalfunctionType(heavy, MalfunctionTypeEnum.Heavie);
             }
             return result;
         }
 
 
-        private static MalfunctionTypeEnum MalfunctionType(int param)
+        private static MalfunctionTypeEnum MalfunctionType(int param, MalfunctionTypeEnum type)
         {
-            if (IsMalfunction(param))
+            if (IsMalfunction(param) && type == MalfunctionTypeEnum.Light)
             {
                 return MalfunctionTypeEnum.Light;
             }
 
-            if (IsMalfunction(param))
+            if (IsMalfunction(param) && type == MalfunctionTypeEnum.Heavie)
             {
                 return MalfunctionTypeEnum.Heavie;
             }
