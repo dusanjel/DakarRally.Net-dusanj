@@ -70,6 +70,7 @@ namespace DakarRally.Net_dusanj.Service.Services
                 foreach (var vehicle in vehicles)
                 {
                     vehicle.StartTime = start;
+                    vehicle.Winner = false;
                     unitOfWork.Vehicles.Edit(vehicle);
                 }
 
