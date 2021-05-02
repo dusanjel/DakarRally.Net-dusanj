@@ -9,6 +9,8 @@ namespace DakarRally.Net_dusanj.Service.Interfaces
 
         void UpdateRace(VehicleDto model);
 
+        RaceStatusDto GetRaceStatus(int raceId);
+
         void StartRace(int RaceId);
 
         void ManageRace();

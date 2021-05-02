@@ -1,5 +1,6 @@
 ﻿using DakarRally.Net_dusanj.Service.Dto;
 using DakarRally.Net_dusanj.Service.Interfaces;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -44,6 +45,14 @@ namespace DakarRally.Net_dusanj.Controllers
             raceRepositoryService.StartRace(raceId);
 
             return Ok();
+        }
+
+        [HttpGet]
+        [Route("status")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public IActionResult GetStatus(int id)
+        {
+            return Ok(raceRepositoryService.GetRaceStatus(id));
         }
     }
 }

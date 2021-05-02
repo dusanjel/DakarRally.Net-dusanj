@@ -70,6 +70,22 @@ namespace DakarRally.Net_dusanj.Service.Services
             }
         }
 
+        public RaceStatusDto GetRaceStatus(int raceId)
+        {
+            var race = unitOfWork.Races.Get(raceId);
+            var vehicle = unitOfWork.Vehicles.GetAll().Where(x => x.RaceId == raceId);
+            var carNumber = vehicle.Where(x => x.VehicleType == VehicleTypeEnum.Car).Count();
+            var trucknumber = vehicle.Where(x => x.VehicleType == VehicleTypeEnum.Truck).Count();
+            var motorcycle = vehicle.Where(x => x.VehicleType == VehicleTypeEnum.Motorcycle).Count();
+            return new RaceStatusDto()
+            {
+                RaceStatus = race.RaceStatus,
+                CarNumber = carNumber,
+                TruckNumber = trucknumber,
+                MotorcycleNumber = motorcycle
+            };
+        }
+
         public void ManageRace()
         {
             var allRaces = unitOfWork.Races.GetAll();

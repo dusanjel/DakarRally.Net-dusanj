@@ -1,4 +1,7 @@
-﻿using DakarRally.Net_dusanj.Service.Dto;
+﻿using DakarRally.Net_dusanj.Common.Enum;
+using DakarRally.Net_dusanj.Service.Dto;
+using System;
+using System.Collections.Generic;
 
 namespace DakarRally.Net_dusanj.Service.Interfaces
 {
@@ -8,5 +11,8 @@ namespace DakarRally.Net_dusanj.Service.Interfaces
         VehicleDto getVehicleById(int id);
         void UpdateVehicle(VehicleDto model);
         void removeById(int id);
+        List<VehicleDto> getAllVehiclesLeaderboard();
+        List<VehicleDto> getSpecificVehiclesLeaderboard(VehicleTypeEnum type);
+        VehicleDto getVehicleByParameter(string teamName, string model, DateTime ManufacturingDate, decimal distance);
     }
 }

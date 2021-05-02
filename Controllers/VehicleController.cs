@@ -1,8 +1,10 @@
-﻿using DakarRally.Net_dusanj.Service.Dto;
+﻿using DakarRally.Net_dusanj.Common.Enum;
+using DakarRally.Net_dusanj.Service.Dto;
 using DakarRally.Net_dusanj.Service.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using System;
 
 namespace DakarRally.Net_dusanj.Controllers
 {
@@ -42,6 +44,31 @@ namespace DakarRally.Net_dusanj.Controllers
             vehicleRepositoryService.removeById(id);
 
             return Ok();
+        }
+
+        [HttpGet]
+        [Route("leaderboardall")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public IActionResult GetLeaderboardAll()
+        {
+            return Ok(vehicleRepositoryService.getAllVehiclesLeaderboard());
+        }
+
+        [HttpGet]
+        [Route("leaderboardbytype")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public IActionResult GetLeaderboardByType(VehicleTypeEnum type)
+        {
+            return Ok(vehicleRepositoryService.getSpecificVehiclesLeaderboard(type));
+        }
+
+        [HttpGet]
+        [Route("leaderboardbyparameter")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public IActionResult GetLeaderboardParameter(string teamName, string model, DateTime ManufacturingDate, decimal distance)
+        {
+            return Ok(vehicleRepositoryService
+                .getVehicleByParameter(teamName, model, ManufacturingDate, distance));
         }
     }
 }

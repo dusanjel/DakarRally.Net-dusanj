@@ -4,6 +4,9 @@ using DakarRally.Net_dusanj.Domain.Entity;
 using DakarRally.Net_dusanj.Domain.Interfaces;
 using DakarRally.Net_dusanj.Service.Dto;
 using DakarRally.Net_dusanj.Service.Interfaces;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace DakarRally.Net_dusanj.Service.Services
 {
@@ -39,7 +42,7 @@ namespace DakarRally.Net_dusanj.Service.Services
             unitOfWork.SaveChanges();
         }
 
-        public void UpdateVehicle(VehicleDto model) 
+        public void UpdateVehicle(VehicleDto model)
         {
             var result = unitOfWork.Vehicles.Get(model.VehicleId);
 
@@ -52,7 +55,7 @@ namespace DakarRally.Net_dusanj.Service.Services
         }
 
 
-        public VehicleDto getVehicleById(int id) 
+        public VehicleDto getVehicleById(int id)
         {
             var result = unitOfWork.Vehicles.Get(id);
 
@@ -69,6 +72,38 @@ namespace DakarRally.Net_dusanj.Service.Services
                 unitOfWork.Vehicles.Remove(vehicle);
                 unitOfWork.SaveChanges();
             }
+        }
+
+        public List<VehicleDto> getAllVehiclesLeaderboard()
+        {
+            var result = unitOfWork.Vehicles.GetAll().OrderByDescending(vehicle => vehicle.Distance);
+
+            return _mapper.Map<List<VehicleDto>>(result);
+        }
+
+        public List<VehicleDto> getSpecificVehiclesLeaderboard(VehicleTypeEnum type)
+        {
+            var result = unitOfWork.Vehicles.GetAll()
+                .Where(x => x.VehicleType == type)
+                .OrderByDescending(vehicle => vehicle.Distance);
+
+            return _mapper.Map<List<VehicleDto>>(result);
+        }
+
+        public VehicleDto getVehicleByParameter(string teamName, string model, DateTime ManufacturingDate, decimal distance)
+        {
+            var result = unitOfWork.Vehicles.GetAll()
+                .Where
+                (
+                    x => x.TeamName == teamName || 
+                    x.Model == model || 
+                    x.ManufacturingDate == ManufacturingDate || 
+                    x.Distance == distance
+                );
+
+            var vehicle = _mapper.Map<VehicleDto>(result);
+
+            return vehicle;
         }
     }
 }
