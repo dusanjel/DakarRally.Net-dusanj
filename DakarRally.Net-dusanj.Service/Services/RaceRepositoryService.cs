@@ -63,6 +63,16 @@ namespace DakarRally.Net_dusanj.Service.Services
 
             if (race != null)
             {
+                var vehicles = unitOfWork.Vehicles.GetAll().Where(x => x.RaceId == RaceId);
+
+                var start = DateTime.Now;
+
+                foreach (var vehicle in vehicles)
+                {
+                    vehicle.StartTime = start;
+                    unitOfWork.Vehicles.Edit(vehicle);
+                }
+
                 race.RaceStatus = RaceStatusEnum.Running;
 
                 unitOfWork.Races.Edit(race);
@@ -75,14 +85,14 @@ namespace DakarRally.Net_dusanj.Service.Services
             var race = unitOfWork.Races.Get(raceId);
             var vehicle = unitOfWork.Vehicles.GetAll().Where(x => x.RaceId == raceId);
             var carNumber = vehicle.Where(x => x.VehicleType == VehicleTypeEnum.Car).Count();
-            var trucknumber = vehicle.Where(x => x.VehicleType == VehicleTypeEnum.Truck).Count();
-            var motorcycle = vehicle.Where(x => x.VehicleType == VehicleTypeEnum.Motorcycle).Count();
+            var truckNumber = vehicle.Where(x => x.VehicleType == VehicleTypeEnum.Truck).Count();
+            var motorcycleNumber = vehicle.Where(x => x.VehicleType == VehicleTypeEnum.Motorcycle).Count();
             return new RaceStatusDto()
             {
                 RaceStatus = race.RaceStatus,
                 CarNumber = carNumber,
-                TruckNumber = trucknumber,
-                MotorcycleNumber = motorcycle
+                TruckNumber = truckNumber,
+                MotorcycleNumber = motorcycleNumber
             };
         }
 
@@ -102,8 +112,6 @@ namespace DakarRally.Net_dusanj.Service.Services
             var vehicles = query.AsEnumerable()
                 .GroupBy(x => x.Veh).Select(x => _mapper.Map<Vehicle>(x.Key))
                 .Where(x => x.MalfunctionType != MalfunctionTypeEnum.Heavie).ToList();
-
-            // TODO: Improve calculation, add finish race, add start time and end time
             
             var seconds = 3600 / 10;
 
@@ -205,7 +213,11 @@ namespace DakarRally.Net_dusanj.Service.Services
 
                 if (vehicle.Distance == Race.Distance)
                 {
+                    vehicle.EndTime = DateTime.Now;
                     vehicle.Winner = true;
+                    var race = unitOfWork.Races.Get(vehicle.RaceId);
+                    race.RaceStatus = RaceStatusEnum.Finished;
+                    unitOfWork.Races.Edit(race);
                 }
 
                 unitOfWork.Vehicles.Edit(vehicle);
