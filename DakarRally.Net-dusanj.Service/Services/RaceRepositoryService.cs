@@ -216,6 +216,17 @@ namespace DakarRally.Net_dusanj.Service.Services
                 {
                     vehicle.EndTime = DateTime.Now;
                     vehicle.Winner = true;
+                }
+
+                var AllCount = query.AsEnumerable()
+                .GroupBy(x => x.Veh).Select(x => _mapper.Map<Vehicle>(x.Key)).Count();
+                
+                var heavieMalfuncWinnerCount = query.AsEnumerable()
+                .GroupBy(x => x.Veh).Select(x => _mapper.Map<Vehicle>(x.Key))
+                .Where(x => x.MalfunctionType == MalfunctionTypeEnum.Heavie || vehicle.Winner == true).Count();
+
+                if (AllCount == heavieMalfuncWinnerCount)
+                {
                     var race = unitOfWork.Races.Get(vehicle.RaceId);
                     race.RaceStatus = RaceStatusEnum.Finished;
                     unitOfWork.Races.Edit(race);
