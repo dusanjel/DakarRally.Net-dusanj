@@ -8,11 +8,11 @@ namespace DakarRally.Net_dusanj.Service.Interfaces
     public interface IVehicleRepositoryService
     {
         void SaveVehicle(VehicleDto model);
-        VehicleDto getVehicleById(int id);
+        VehicleDto GetVehicleById(int id);
         void UpdateVehicle(VehicleDto model);
-        void removeById(int id);
-        List<VehicleDto> getAllVehiclesLeaderboard();
-        List<VehicleDto> getSpecificVehiclesLeaderboard(VehicleTypeEnum type);
-        List<VehicleDto> getVehicleByParameter(string teamName, string model, DateTime ManufacturingDate, decimal distance);
+        void RemoveById(int id);
+        List<VehicleDto> GetAllVehiclesLeaderboard();
+        List<VehicleDto> GetSpecificVehiclesLeaderboard(VehicleTypeEnum type);
+        List<VehicleDto> GetVehicleByParameter(string teamName, string model, DateTime ManufacturingDate, decimal distance);
     }
 }

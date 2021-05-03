@@ -55,7 +55,7 @@ namespace DakarRally.Net_dusanj.Service.Services
         }
 
 
-        public VehicleDto getVehicleById(int id)
+        public VehicleDto GetVehicleById(int id)
         {
             var result = unitOfWork.Vehicles.Get(id);
 
@@ -64,7 +64,7 @@ namespace DakarRally.Net_dusanj.Service.Services
             return vehicle;
         }
 
-        public void removeById(int id)
+        public void RemoveById(int id)
         {
             var vehicle = unitOfWork.Vehicles.Get(id);
             if (vehicle != null)
@@ -74,14 +74,14 @@ namespace DakarRally.Net_dusanj.Service.Services
             }
         }
 
-        public List<VehicleDto> getAllVehiclesLeaderboard()
+        public List<VehicleDto> GetAllVehiclesLeaderboard()
         {
             var result = unitOfWork.Vehicles.GetAll().OrderByDescending(vehicle => vehicle.Distance);
 
             return _mapper.Map<List<VehicleDto>>(result);
         }
 
-        public List<VehicleDto> getSpecificVehiclesLeaderboard(VehicleTypeEnum type)
+        public List<VehicleDto> GetSpecificVehiclesLeaderboard(VehicleTypeEnum type)
         {
             var result = unitOfWork.Vehicles.GetAll()
                 .Where(x => x.VehicleType == type)
@@ -90,7 +90,7 @@ namespace DakarRally.Net_dusanj.Service.Services
             return _mapper.Map<List<VehicleDto>>(result);
         }
 
-        public List<VehicleDto> getVehicleByParameter(string teamName, string model, DateTime ManufacturingDate, decimal distance)
+        public List<VehicleDto> GetVehicleByParameter(string teamName, string model, DateTime ManufacturingDate, decimal distance)
         {
             var result = unitOfWork.Vehicles.GetAll()
                 .Where

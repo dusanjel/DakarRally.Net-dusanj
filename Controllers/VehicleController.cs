@@ -34,14 +34,14 @@ namespace DakarRally.Net_dusanj.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         public IActionResult Get(int id)
         {
-            return Ok(vehicleRepositoryService.getVehicleById(id));
+            return Ok(vehicleRepositoryService.GetVehicleById(id));
         }
 
         [HttpPost]
         [Route("remove")]
         public IActionResult Remove(int id)
         {
-            vehicleRepositoryService.removeById(id);
+            vehicleRepositoryService.RemoveById(id);
 
             return Ok();
         }
@@ -51,7 +51,7 @@ namespace DakarRally.Net_dusanj.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         public IActionResult GetLeaderboardAll()
         {
-            return Ok(vehicleRepositoryService.getAllVehiclesLeaderboard());
+            return Ok(vehicleRepositoryService.GetAllVehiclesLeaderboard());
         }
 
         [HttpGet]
@@ -59,7 +59,7 @@ namespace DakarRally.Net_dusanj.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         public IActionResult GetLeaderboardByType(VehicleTypeEnum type)
         {
-            return Ok(vehicleRepositoryService.getSpecificVehiclesLeaderboard(type));
+            return Ok(vehicleRepositoryService.GetSpecificVehiclesLeaderboard(type));
         }
 
         [HttpGet]
@@ -68,7 +68,7 @@ namespace DakarRally.Net_dusanj.Controllers
         public IActionResult GetLeaderboardParameter(string teamName, string model, DateTime ManufacturingDate, decimal distance)
         {
             return Ok(vehicleRepositoryService
-                .getVehicleByParameter(teamName, model, ManufacturingDate, distance));
+                .GetVehicleByParameter(teamName, model, ManufacturingDate, distance));
         }
     }
 }
