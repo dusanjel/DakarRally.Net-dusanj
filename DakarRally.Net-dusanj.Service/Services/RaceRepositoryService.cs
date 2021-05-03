@@ -212,20 +212,28 @@ namespace DakarRally.Net_dusanj.Service.Services
                         break;
                 }
 
-                if (vehicle.Distance == Race.Distance)
+                var winnerCount = query.AsEnumerable()
+                .GroupBy(x => x.Veh).Select(x => _mapper.Map<Vehicle>(x.Key))
+                .Where(x => x.Winner == true).Count();
+
+                if (vehicle.Distance >= Race.Distance)
                 {
                     vehicle.EndTime = DateTime.Now;
-                    vehicle.Winner = true;
+                    vehicle.Finished = true;
+                    if (winnerCount == 0)
+                    {
+                        vehicle.Winner = true;
+                    }
                 }
 
                 var AllCount = query.AsEnumerable()
                 .GroupBy(x => x.Veh).Select(x => _mapper.Map<Vehicle>(x.Key)).Count();
                 
-                var heavieMalfuncWinnerCount = query.AsEnumerable()
+                var heavieMalfuncFinishedCount = query.AsEnumerable()
                 .GroupBy(x => x.Veh).Select(x => _mapper.Map<Vehicle>(x.Key))
-                .Where(x => x.MalfunctionType == MalfunctionTypeEnum.Heavie || vehicle.Winner == true).Count();
+                .Where(x => x.MalfunctionType == MalfunctionTypeEnum.Heavie || vehicle.Finished == true).Count();
 
-                if (AllCount == heavieMalfuncWinnerCount)
+                if (AllCount == heavieMalfuncFinishedCount)
                 {
                     var race = unitOfWork.Races.Get(vehicle.RaceId);
                     race.RaceStatus = RaceStatusEnum.Finished;

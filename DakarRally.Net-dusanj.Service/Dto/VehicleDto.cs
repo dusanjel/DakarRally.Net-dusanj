@@ -20,13 +20,5 @@ namespace DakarRally.Net_dusanj.Service.Dto
         public MotorcycleTypeEnum MotorcycleType { get; set; }
 
         public VehicleTypeEnum VehicleType { get; set; }
-
-        public decimal Distance { get; set; }
-
-        public DateTime StartTime { get; set; }
-
-        public DateTime EndTime { get; set; }
-
-        public bool Winner { get; set; }
     }
 }
