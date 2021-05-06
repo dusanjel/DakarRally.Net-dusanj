@@ -6,7 +6,7 @@ using System;
 using System.IO;
 using System.Reflection;
 
-namespace DakarRally.Net_dusanj
+namespace DakarRally.NetDusanj
 {
     public class Program
     {

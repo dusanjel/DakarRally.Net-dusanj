@@ -17,7 +17,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "DakarRally.Net_dusanj": {
+    "DakarRally.NetDusanj": {
       "commandName": "Project",
       "dotnetRunMessages": "true",
       "launchBrowser": true,

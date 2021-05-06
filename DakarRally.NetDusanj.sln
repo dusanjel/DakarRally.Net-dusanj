@@ -1,0 +1,59 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31025.194
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DakarRally.NetDusanj", "DakarRally.NetDusanj.csproj", "{B79994B0-3167-4F62-960A-27C412D202AE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution", "Solution", "{C9D6D7FF-5A87-4D3A-BA81-76A8768C5B57}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UnitTestingMetrics", "UnitTestingMetrics", "{CC593B63-830A-4D61-A6F6-21619E6D82FF}"
+	ProjectSection(SolutionItems) = preProject
+		RunUnitTestingMetrics.bat = RunUnitTestingMetrics.bat
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DakarRally.NetDusanj.Common", "DakarRally.NetDusanj.Common\DakarRally.NetDusanj.Common.csproj", "{2BF6A6CB-6BF9-4F24-927C-49CB1A76E1A8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DakarRally.NetDusanj.Domain", "DakarRally.NetDusanj.Domain\DakarRally.NetDusanj.Domain.csproj", "{0CD009F1-173F-4388-A7D2-3F6425E046F9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DakarRally.NetDusanj.Service", "DakarRally.NetDusanj.Service\DakarRally.NetDusanj.Service.csproj", "{C4D37CBE-EDC1-4972-B509-6334628E1D72}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DakarRally.NetDusanj.Test", "DakarRally.NetDusanj.Test\DakarRally.NetDusanj.Test.csproj", "{ACE16D85-33AD-4422-865A-7D2D5F7661ED}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B79994B0-3167-4F62-960A-27C412D202AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B79994B0-3167-4F62-960A-27C412D202AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B79994B0-3167-4F62-960A-27C412D202AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B79994B0-3167-4F62-960A-27C412D202AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2BF6A6CB-6BF9-4F24-927C-49CB1A76E1A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2BF6A6CB-6BF9-4F24-927C-49CB1A76E1A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2BF6A6CB-6BF9-4F24-927C-49CB1A76E1A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2BF6A6CB-6BF9-4F24-927C-49CB1A76E1A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0CD009F1-173F-4388-A7D2-3F6425E046F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0CD009F1-173F-4388-A7D2-3F6425E046F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0CD009F1-173F-4388-A7D2-3F6425E046F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0CD009F1-173F-4388-A7D2-3F6425E046F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4D37CBE-EDC1-4972-B509-6334628E1D72}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4D37CBE-EDC1-4972-B509-6334628E1D72}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4D37CBE-EDC1-4972-B509-6334628E1D72}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4D37CBE-EDC1-4972-B509-6334628E1D72}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ACE16D85-33AD-4422-865A-7D2D5F7661ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ACE16D85-33AD-4422-865A-7D2D5F7661ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ACE16D85-33AD-4422-865A-7D2D5F7661ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ACE16D85-33AD-4422-865A-7D2D5F7661ED}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{CC593B63-830A-4D61-A6F6-21619E6D82FF} = {C9D6D7FF-5A87-4D3A-BA81-76A8768C5B57}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C5F4975D-38D9-4A8C-917E-D51E0850E9F1}
+	EndGlobalSection
+EndGlobal

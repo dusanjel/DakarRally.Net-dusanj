@@ -1,7 +1,7 @@
-using DakarRally.Net_dusanj.Interfaces;
-using DakarRally.Net_dusanj.Service.Interfaces;
-using DakarRally.Net_dusanj.Service.IoC;
-using DakarRally.Net_dusanj.Service.Services;
+using DakarRally.NetDusanj.Interfaces;
+using DakarRally.NetDusanj.Service.Interfaces;
+using DakarRally.NetDusanj.Service.IoC;
+using DakarRally.NetDusanj.Service.Services;
 using Hangfire;
 using Hangfire.Dashboard;
 using Hangfire.MemoryStorage;
@@ -13,7 +13,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using Serilog;
 
-namespace DakarRally.Net_dusanj
+namespace DakarRally.NetDusanj
 {
     public class Startup
     {
@@ -42,7 +42,7 @@ namespace DakarRally.Net_dusanj
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "DakarRally.Net_dusanj", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "DakarRally.NetDusanj", Version = "v1" });
             });
         }
 
@@ -54,7 +54,7 @@ namespace DakarRally.Net_dusanj
                 app.UseSerilogRequestLogging();
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "DakarRally.Net_dusanj v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "DakarRally.NetDusanj v1"));
             }
 
             app.UseHangfireServer();

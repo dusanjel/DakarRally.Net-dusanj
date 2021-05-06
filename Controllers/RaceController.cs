@@ -1,11 +1,11 @@
-﻿using DakarRally.Net_dusanj.Service.Dto;
-using DakarRally.Net_dusanj.Service.Interfaces;
+﻿using DakarRally.NetDusanj.Service.Dto;
+using DakarRally.NetDusanj.Service.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 
-namespace DakarRally.Net_dusanj.Controllers
+namespace DakarRally.NetDusanj.Controllers
 {
     [ApiController]
     [Route("[controller]")]

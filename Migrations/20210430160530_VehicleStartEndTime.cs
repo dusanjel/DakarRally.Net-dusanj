@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace DakarRally.Net_dusanj.Migrations
+namespace DakarRally.NetDusanj.Migrations
 {
     public partial class VehicleStartEndTime : Migration
     {

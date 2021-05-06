@@ -1,4 +1,4 @@
-﻿namespace DakarRally.Net_dusanj.Interfaces
+﻿namespace DakarRally.NetDusanj.Interfaces
 {
     public interface IScheduler
     {

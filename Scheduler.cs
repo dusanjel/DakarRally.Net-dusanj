@@ -1,9 +1,9 @@
-﻿using DakarRally.Net_dusanj.Interfaces;
-using DakarRally.Net_dusanj.Service.Interfaces;
+﻿using DakarRally.NetDusanj.Interfaces;
+using DakarRally.NetDusanj.Service.Interfaces;
 using Hangfire;
 using Microsoft.Extensions.Logging;
 
-namespace DakarRally.Net_dusanj
+namespace DakarRally.NetDusanj
 {
     public class Scheduler : IScheduler
     {
